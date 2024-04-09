@@ -1,5 +1,6 @@
 mod generate;
 mod glyph;
+mod intersect;
 mod parameters;
 mod stroke;
 

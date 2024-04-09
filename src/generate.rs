@@ -1,5 +1,6 @@
 use crate::glyph::Glyph;
 use crate::glyph::InternalGlyph;
+use crate::intersect::are_strokes_linked;
 use crate::parameters::Parameters;
 use crate::stroke::InternalStroke;
 use crate::stroke::Stroke;
@@ -15,12 +16,8 @@ impl GlyphGenerator {
     }
 
     pub fn are_strokes_intersecting(&self, glyph: &InternalGlyph) -> bool {
-        glyph.strokes.iter().all(|stroke| {
-            glyph.strokes.iter().any(|other| {
-                stroke.index != other.index
-                    && self.parameters.intersection_matrix[stroke.index][other.index] == 1
-            })
-        })
+        let indices: Vec<usize> = glyph.strokes.iter().map(|stroke| stroke.index).collect();
+        return are_strokes_linked(&indices, &self.parameters.intersection_matrix);
     }
 
     pub fn transform(&self, glyph: &InternalGlyph) -> Vec<InternalGlyph> {
