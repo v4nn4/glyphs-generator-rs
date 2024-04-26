@@ -40,6 +40,7 @@ pub fn compute(computable_json: String) -> Result<String, JsValue> {
     let computable: Computable =
         serde_json::from_str(&computable_json).expect("Error deserializing computable JSON");
     let strokes = computable.strokes;
-    let result = generator.generate(&strokes, &strokes[0]);
+    let seed = strokes[0];
+    let result = generator.generate(&strokes, &seed);
     Ok(serde_json::to_string(&result).unwrap())
 }

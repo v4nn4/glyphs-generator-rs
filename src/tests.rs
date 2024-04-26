@@ -121,7 +121,7 @@ mod tests {
         let context = setup();
         let generator = context.basic;
         let glyphs = generator.generate(&strokes, &strokes[0]);
-        assert_eq!(7, glyphs.len());
+        assert_eq!(5, glyphs.len());
     }
 
     #[test]
@@ -167,7 +167,7 @@ mod tests {
         let context = setup();
         let generator = context.basic;
         let glyphs = generator.generate(&strokes, &strokes[0]);
-        assert_eq!(31, glyphs.len());
+        assert_eq!(15, glyphs.len());
     }
 
     #[test]
@@ -213,7 +213,7 @@ mod tests {
         let context = setup();
         let generator = context.advanced;
         let glyphs = generator.generate(&strokes, &strokes[0]);
-        assert_eq!(31, glyphs.len());
+        assert_eq!(15, glyphs.len());
     }
 
     #[test]

@@ -87,10 +87,7 @@ impl GlyphGenerator {
                     }
                     if self.are_strokes_intersecting(&next_glyph) {
                         let transformed_glyphs = self.transform(&next_glyph);
-                        if transformed_glyphs
-                            .iter()
-                            .all(|g| !glyphs[i + 1].contains(&g))
-                        {
+                        if transformed_glyphs.iter().all(|g| !next_glyphs.contains(&g)) {
                             next_glyphs.push(next_glyph);
                         }
                     }
